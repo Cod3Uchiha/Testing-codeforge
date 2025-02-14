@@ -1,0 +1,97 @@
+**HTML File:**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countdown to New Year</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Countdown to New Year</h1>
+  <div id="countdown"></div>
+  <script src="script.js"></script>
+</body>
+</html>
+```
+
+**CSS File (style.css):**
+
+```css
+#countdown {
+  font-size: 100px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 100px;
+}
+```
+
+**JavaScript File (script.js):**
+
+```javascript
+// Get the current date and time
+var now = new Date();
+
+// Get the next new year's date and time
+var nextYear = new Date();
+nextYear.setFullYear(now.getFullYear() + 1);
+nextYear.setMonth(0);
+nextYear.setDate(1);
+nextYear.setHours(0);
+nextYear.setMinutes(0);
+nextYear.setSeconds(0);
+
+// Calculate the difference between the two dates
+var diff = nextYear - now;
+
+// Convert the difference to days, hours, minutes, and seconds
+var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+// Display the countdown
+document.getElementById("countdown").innerHTML = days + " days, " + hours + " hours, " + minutes + " minutes, and " + seconds + " seconds";
+
+// Update the countdown every second
+setInterval(function() {
+
+  // Get the current date and time
+  now = new Date();
+
+  // Calculate the difference between the two dates
+  diff = nextYear - now;
+
+  // Convert the difference to days, hours, minutes, and seconds
+  days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+  // Display the countdown
+  document.getElementById("countdown").innerHTML = days + " days, " + hours + " hours, " + minutes + " minutes, and " + seconds + " seconds";
+
+}, 1000);
+```
+
+**Documentation:**
+
+This code creates a countdown to the next new year. It displays the countdown in days, hours, minutes, and seconds. The countdown is updated every second.
+
+**Implementation Details:**
+
+The code uses the following JavaScript functions:
+
+* `setInterval()`: Sets a timer to repeatedly execute a function at a specified interval.
+* `Date()`: Creates a new `Date` object representing a specific point in time.
+* `getFullYear()`, `getMonth()`, `getDate()`, `getHours()`, `getMinutes()`, and `getSeconds()`: Get the year, month, date, hours, minutes, and seconds from a `Date` object.
+* `setFullYear()`, `setMonth()`, `setDate()`, `setHours()`, `setMinutes()`, and `setSeconds()`: Set the year, month, date, hours, minutes, and seconds of a `Date` object.
+* `Math.floor()`: Rounds a number down to the nearest integer.
+
+The code also uses the following HTML elements:
+
+* `<head>`: Contains metadata about the HTML document.
+* `<body>`: Contains the main content of the HTML document.
+* `<h1>`: Defines a heading.
+* `<div>`: Defines a division or section.
+* `<script>`: Includes a JavaScript file.
